@@ -6,7 +6,7 @@ properties:
   containers:
     - name: mongo
       properties:
-        image: ${ACR_LOGIN_SERVER}/p2gps:db
+        image: acrgps6091.azurecr.io/p2gps:db
         resources:
           requests:
             cpu: 0.15
@@ -20,7 +20,7 @@ properties:
 
     - name: order
       properties:
-        image: ${ACR_LOGIN_SERVER}/p2gps:order
+        image: acrgps6091.azurecr.io/p2gps:order
         resources:
           requests:
             cpu: 0.3
@@ -29,13 +29,13 @@ properties:
           - port: 8080
         environmentVariables:
           - name: MONGODB_HOST
-            value: mongo
+            value: localhost
           - name: MONGODB_DATABASE
             value: ordering
 
     - name: web
       properties:
-        image: ${ACR_LOGIN_SERVER}/p2gps:web
+        image: acrgps6091.azurecr.io/p2gps:web
         resources:
           requests:
             cpu: 0.25
@@ -45,9 +45,9 @@ properties:
         environmentVariables: []
 
   imageRegistryCredentials:
-    - server: ${ACR_LOGIN_SERVER}
-      username: ${ACR_USERNAME}
-      password: ${ACR_PASSWORD}
+    - server: acrgps6091.azurecr.io
+      username: acrgps6091
+      password: G3cUs+qcQxrEp03NKI9t8RKhoJLqMnoB8AYeVa5/TU+ACRDC9TfK
 
   ipAddress:
     type: Public
@@ -58,7 +58,7 @@ properties:
         port: 8082
       - protocol: tcp
         port: 27017
-      - protocol:  tcp
+      - protocol: tcp
         port: 28017
 
   volumes:
